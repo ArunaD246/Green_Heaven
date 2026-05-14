@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <!-- =========================================
+         GREEN BUILDING CONSULTANCY WEBSITE
+         HTML5 + CSS3 + Bootstrap 5 + JavaScript
+    ========================================== -->
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description"
-        content="Green Building Consultancy - Sustainable architecture and eco-friendly building solutions." />
-    <meta name="keywords"
-        content="Green Building, Sustainable Architecture, LEED, Eco Friendly Construction" />
 
-    <title>EcoBuild Consultancy</title>
+    <!-- SEO -->
+    <meta name="description" content="Premium Green Building Consultancy Website - Sustainable architecture, energy efficiency, LEED consulting and eco-friendly solutions." />
+    <meta name="keywords" content="Green Building, Sustainable Architecture, LEED Consultancy, Eco-friendly Design" />
+    <meta name="author" content="GreenScape Consultancy" />
+
+    <title>GreenScape Consultancy | Sustainable Building Experts</title>
 
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -18,756 +23,962 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <!-- Google Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- AOS Animation -->
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
     <style>
-        /* ======================================
+
+        /* =========================================
            GLOBAL STYLES
-        ====================================== */
+        ========================================== */
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
+        :root{
+            --primary:#1f7a4d;
+            --secondary:#4caf50;
+            --light:#f5f7f3;
+            --dark:#1d2b1f;
+            --gray:#6c757d;
+            --white:#ffffff;
+            --shadow:0 10px 30px rgba(0,0,0,0.08);
         }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: #f8f9f7;
-            color: #333;
-            overflow-x: hidden;
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            scroll-behavior:smooth;
         }
 
-        :root {
-            --green: #2e7d32;
-            --light-green: #81c784;
-            --dark: #1b1b1b;
-            --gray: #f1f1f1;
-            --white: #ffffff;
+        body{
+            font-family:'Poppins',sans-serif;
+            background:var(--light);
+            color:#333;
+            overflow-x:hidden;
         }
 
-        section {
-            padding: 100px 0;
+        section{
+            padding:100px 0;
         }
 
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--green);
-            margin-bottom: 20px;
+        .section-title{
+            font-size:2.5rem;
+            font-weight:700;
+            color:var(--dark);
+            margin-bottom:20px;
         }
 
-        .section-subtitle {
-            color: #666;
-            margin-bottom: 50px;
+        .section-subtitle{
+            color:var(--gray);
+            max-width:700px;
+            margin:auto;
         }
 
-        /* ======================================
+        .btn-green{
+            background:linear-gradient(135deg,var(--primary),var(--secondary));
+            color:white;
+            padding:14px 30px;
+            border:none;
+            border-radius:50px;
+            font-weight:600;
+            transition:0.4s;
+            box-shadow:var(--shadow);
+        }
+
+        .btn-green:hover{
+            transform:translateY(-3px);
+            background:linear-gradient(135deg,var(--secondary),var(--primary));
+            color:white;
+        }
+
+        .glass{
+            background:rgba(255,255,255,0.18);
+            backdrop-filter:blur(10px);
+            border:1px solid rgba(255,255,255,0.2);
+        }
+
+        /* =========================================
            LOADER
-        ====================================== */
+        ========================================== */
 
-        #loader {
-            position: fixed;
-            width: 100%;
-            height: 100vh;
-            background: white;
-            z-index: 99999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        #loader{
+            position:fixed;
+            width:100%;
+            height:100%;
+            background:#fff;
+            z-index:99999;
+            display:flex;
+            align-items:center;
+            justify-content:center;
         }
 
-        .spinner-border {
-            width: 4rem;
-            height: 4rem;
-            color: var(--green);
+        .loader-circle{
+            width:70px;
+            height:70px;
+            border:8px solid #e9ecef;
+            border-top:8px solid var(--primary);
+            border-radius:50%;
+            animation:spin 1s linear infinite;
         }
 
-        /* ======================================
+        @keyframes spin{
+            100%{
+                transform:rotate(360deg);
+            }
+        }
+
+        /* =========================================
            NAVBAR
-        ====================================== */
+        ========================================== */
 
-        .navbar {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        .navbar{
+            transition:0.4s;
+            padding:18px 0;
+            background:rgba(255,255,255,0.9);
+            backdrop-filter:blur(10px);
         }
 
-        .navbar-brand {
-            font-weight: 700;
-            color: var(--green) !important;
-            font-size: 1.8rem;
+        .navbar-brand{
+            font-size:1.7rem;
+            font-weight:700;
+            color:var(--primary)!important;
         }
 
-        .nav-link {
-            color: #333 !important;
-            font-weight: 500;
-            margin-left: 15px;
-            transition: 0.3s;
+        .nav-link{
+            color:#333 !important;
+            font-weight:500;
+            margin-left:15px;
+            transition:0.3s;
         }
 
-        .nav-link:hover {
-            color: var(--green) !important;
+        .nav-link:hover{
+            color:var(--primary)!important;
         }
 
-        /* ======================================
+        /* =========================================
            HERO SECTION
-        ====================================== */
+        ========================================== */
 
-        .hero {
-            height: 100vh;
-            background:
-                linear-gradient(rgba(0, 0, 0, 0.5),
-                    rgba(0, 0, 0, 0.5)),
-                url('https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=1600&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            color: white;
-            text-align: center;
+        .hero{
+            min-height:100vh;
+            position:relative;
+            display:flex;
+            align-items:center;
+            color:white;
+            overflow:hidden;
         }
 
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 700;
+        .hero::before{
+            content:"";
+            position:absolute;
+            inset:0;
+            background:rgba(0,0,0,0.55);
+            z-index:1;
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            margin: 20px 0;
+        .hero video{
+            position:absolute;
+            width:100%;
+            height:100%;
+            object-fit:cover;
         }
 
-        .btn-green {
-            background: var(--green);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 50px;
-            border: none;
-            transition: 0.4s;
+        .hero-content{
+            position:relative;
+            z-index:2;
         }
 
-        .btn-green:hover {
-            background: #1f5d22;
-            transform: translateY(-3px);
+        .hero h1{
+            font-size:4rem;
+            font-weight:700;
+            line-height:1.2;
         }
 
-        /* ======================================
-           GLASS CARD
-        ====================================== */
-
-        .glass-card {
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            transition: 0.4s;
+        .hero p{
+            font-size:1.1rem;
+            margin:25px 0;
+            max-width:650px;
         }
 
-        .glass-card:hover {
-            transform: translateY(-10px);
+        /* =========================================
+           ABOUT
+        ========================================== */
+
+        .about-card{
+            background:white;
+            padding:30px;
+            border-radius:20px;
+            box-shadow:var(--shadow);
+            transition:0.4s;
+            height:100%;
         }
 
-        /* ======================================
+        .about-card:hover{
+            transform:translateY(-8px);
+        }
+
+        /* =========================================
            SERVICES
-        ====================================== */
+        ========================================== */
 
-        .service-card {
-            background: white;
-            border-radius: 20px;
-            padding: 40px 25px;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
-            transition: 0.4s;
-            height: 100%;
+        .service-card{
+            background:white;
+            border-radius:20px;
+            padding:35px 25px;
+            text-align:center;
+            box-shadow:var(--shadow);
+            transition:0.4s;
+            height:100%;
         }
 
-        .service-card:hover {
-            transform: translateY(-10px);
+        .service-card:hover{
+            transform:translateY(-10px);
         }
 
-        .service-icon {
-            font-size: 3rem;
-            color: var(--green);
-            margin-bottom: 20px;
+        .service-card i{
+            font-size:3rem;
+            color:var(--primary);
+            margin-bottom:20px;
         }
 
-        /* ======================================
+        /* =========================================
+           COUNTER SECTION
+        ========================================== */
+
+        .counter-section{
+            background:linear-gradient(135deg,#1f7a4d,#4caf50);
+            color:white;
+        }
+
+        .counter-box h2{
+            font-size:3rem;
+            font-weight:700;
+        }
+
+        /* =========================================
            PROJECTS
-        ====================================== */
+        ========================================== */
 
-        .project-card {
-            overflow: hidden;
-            border-radius: 20px;
-            position: relative;
+        .project-card{
+            position:relative;
+            overflow:hidden;
+            border-radius:20px;
+            box-shadow:var(--shadow);
         }
 
-        .project-card img {
-            width: 100%;
-            transition: 0.5s;
+        .project-card img{
+            width:100%;
+            height:300px;
+            object-fit:cover;
+            transition:0.5s;
         }
 
-        .project-card:hover img {
-            transform: scale(1.1);
+        .project-overlay{
+            position:absolute;
+            inset:0;
+            background:rgba(0,0,0,0.6);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            opacity:0;
+            transition:0.5s;
+            color:white;
+            font-size:1.4rem;
+            font-weight:600;
         }
 
-        .project-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: 0.5s;
+        .project-card:hover img{
+            transform:scale(1.1);
         }
 
-        .project-card:hover .project-overlay {
-            opacity: 1;
+        .project-card:hover .project-overlay{
+            opacity:1;
         }
 
-        /* ======================================
-           COUNTERS
-        ====================================== */
+        /* =========================================
+           FEATURES
+        ========================================== */
 
-        .counter-box {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        .feature-box{
+            background:white;
+            padding:30px;
+            border-radius:20px;
+            text-align:center;
+            box-shadow:var(--shadow);
+            transition:0.4s;
+            height:100%;
         }
 
-        .counter-box h2 {
-            color: var(--green);
-            font-size: 3rem;
-            font-weight: 700;
+        .feature-box:hover{
+            transform:translateY(-8px);
         }
 
-        /* ======================================
+        .feature-box i{
+            font-size:3rem;
+            color:var(--primary);
+            margin-bottom:20px;
+        }
+
+        /* =========================================
            TESTIMONIALS
-        ====================================== */
+        ========================================== */
 
-        .testimonial-card {
-            background: white;
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+        .testimonial-card{
+            background:white;
+            padding:35px;
+            border-radius:20px;
+            box-shadow:var(--shadow);
         }
 
-        /* ======================================
+        .testimonial-card img{
+            width:70px;
+            height:70px;
+            border-radius:50%;
+            object-fit:cover;
+        }
+
+        /* =========================================
            BLOG
-        ====================================== */
+        ========================================== */
 
-        .blog-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            transition: 0.4s;
+        .blog-card{
+            background:white;
+            border-radius:20px;
+            overflow:hidden;
+            box-shadow:var(--shadow);
+            transition:0.4s;
         }
 
-        .blog-card:hover {
-            transform: translateY(-10px);
+        .blog-card:hover{
+            transform:translateY(-10px);
         }
 
-        .blog-card img {
-            width: 100%;
+        .blog-card img{
+            height:250px;
+            object-fit:cover;
         }
 
-        .blog-content {
-            padding: 25px;
-        }
-
-        /* ======================================
+        /* =========================================
            CONTACT
-        ====================================== */
+        ========================================== */
 
-        .form-control {
-            border-radius: 10px;
-            padding: 12px;
+        .contact-form{
+            background:white;
+            padding:40px;
+            border-radius:20px;
+            box-shadow:var(--shadow);
         }
 
-        iframe {
-            border-radius: 20px;
+        .form-control{
+            padding:14px;
+            border-radius:12px;
         }
 
-        /* ======================================
+        /* =========================================
            FOOTER
-        ====================================== */
+        ========================================== */
 
-        footer {
-            background: #111;
-            color: white;
-            padding: 60px 0 20px;
+        footer{
+            background:#122016;
+            color:#ccc;
+            padding:70px 0 20px;
         }
 
-        footer a {
-            color: #ccc;
-            text-decoration: none;
+        footer h5{
+            color:white;
+            margin-bottom:20px;
         }
 
-        footer a:hover {
-            color: white;
+        footer a{
+            color:#ccc;
+            text-decoration:none;
+            transition:0.3s;
         }
 
-        .social-icons a {
-            font-size: 1.3rem;
-            margin-right: 15px;
+        footer a:hover{
+            color:white;
         }
 
-        /* ======================================
+        .social-icons a{
+            width:42px;
+            height:42px;
+            display:inline-flex;
+            align-items:center;
+            justify-content:center;
+            background:rgba(255,255,255,0.1);
+            border-radius:50%;
+            margin-right:10px;
+        }
+
+        /* =========================================
+           AI CHATBOX
+        ========================================== */
+
+        .chat-toggle{
+            position:fixed;
+            right:25px;
+            bottom:25px;
+            width:65px;
+            height:65px;
+            border-radius:50%;
+            background:linear-gradient(135deg,#1f7a4d,#4caf50);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            color:white;
+            font-size:28px;
+            cursor:pointer;
+            z-index:9999;
+            box-shadow:0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .chatbox{
+            position:fixed;
+            right:25px;
+            bottom:100px;
+            width:340px;
+            background:white;
+            border-radius:20px;
+            overflow:hidden;
+            box-shadow:0 20px 40px rgba(0,0,0,0.2);
+            display:none;
+            z-index:9999;
+        }
+
+        .chat-header{
+            background:linear-gradient(135deg,#1f7a4d,#4caf50);
+            color:white;
+            padding:15px;
+            font-weight:600;
+        }
+
+        .chat-body{
+            height:320px;
+            overflow-y:auto;
+            padding:15px;
+            background:#f8f9fa;
+        }
+
+        .message{
+            padding:12px 14px;
+            border-radius:15px;
+            margin-bottom:12px;
+            max-width:85%;
+        }
+
+        .bot{
+            background:#e9f7ee;
+        }
+
+        .user{
+            background:#d1e7dd;
+            margin-left:auto;
+        }
+
+        .chat-footer{
+            display:flex;
+            padding:10px;
+            gap:10px;
+            border-top:1px solid #eee;
+        }
+
+        .chat-footer input{
+            flex:1;
+            border:1px solid #ddd;
+            border-radius:10px;
+            padding:10px;
+            outline:none;
+        }
+
+        .chat-footer button{
+            border:none;
+            background:var(--primary);
+            color:white;
+            padding:10px 16px;
+            border-radius:10px;
+        }
+
+        /* =========================================
            RESPONSIVE
-        ====================================== */
+        ========================================== */
 
-        @media(max-width:768px) {
-            .hero h1 {
-                font-size: 2.5rem;
+        @media(max-width:768px){
+
+            .hero h1{
+                font-size:2.5rem;
             }
 
-            .section-title {
-                font-size: 2rem;
+            .section-title{
+                font-size:2rem;
+            }
+
+            .chatbox{
+                width:90%;
+                right:5%;
             }
         }
+
     </style>
 </head>
 
 <body>
 
-    <!-- ======================================
-         LOADER
-    ====================================== -->
+<!-- =========================================
+     LOADER
+========================================== -->
 
-    <div id="loader">
-        <div class="spinner-border" role="status"></div>
+<div id="loader">
+    <div class="loader-circle"></div>
+</div>
+
+<!-- =========================================
+     NAVBAR
+========================================== -->
+
+<nav class="navbar navbar-expand-lg fixed-top shadow-sm">
+    <div class="container">
+
+        <a class="navbar-brand" href="#">
+            <i class="bi bi-tree-fill"></i> GreenScape
+        </a>
+
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navMenu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
+                <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+                <li class="nav-item"><a href="#features" class="nav-link">Features</a></li>
+                <li class="nav-item"><a href="#blog" class="nav-link">Blog</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+
+    </div>
+</nav>
+
+<!-- =========================================
+     HERO SECTION
+========================================== -->
+
+<section class="hero" id="home">
+
+    <!-- Background Video -->
+    <video autoplay muted loop playsinline>
+        <source src="https://cdn.coverr.co/videos/coverr-modern-city-buildings-1560085242314?download=1080p" type="video/mp4">
+    </video>
+
+    <div class="container hero-content">
+        <div class="row">
+            <div class="col-lg-8">
+
+                <div class="glass p-4 rounded-4" data-aos="fade-up">
+
+                    <h1>Building a Greener & Smarter Future</h1>
+
+                    <p>
+                        Premium sustainable architecture and eco-friendly consultancy solutions
+                        designed to reduce environmental impact while enhancing modern living.
+                    </p>
+
+                    <a href="#contact" class="btn btn-green">
+                        Get Free Consultation
+                    </a>
+
+                </div>
+
+            </div>
+        </div>
     </div>
 
-    <!-- ======================================
-         NAVBAR
-    ====================================== -->
+</section>
 
-    <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">EcoBuild</a>
+<!-- =========================================
+     ABOUT SECTION
+========================================== -->
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+<section id="about">
+    <div class="container">
 
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                </ul>
-            </div>
+        <div class="text-center mb-5">
+            <h2 class="section-title">About Us</h2>
+            <p class="section-subtitle">
+                We create innovative sustainable building solutions for modern businesses and communities.
+            </p>
         </div>
-    </nav>
 
-    <!-- ======================================
-         HERO SECTION
-    ====================================== -->
+        <div class="row g-4">
 
-    <section class="hero" id="home">
-        <div class="container">
-            <div data-aos="fade-up">
-                <h1>Building a Greener Future</h1>
-                <p>
-                    Sustainable architecture and eco-friendly consultancy solutions
-                    for smarter living.
-                </p>
-                <a href="#contact" class="btn btn-green">Get Consultation</a>
+            <div class="col-md-4" data-aos="fade-up">
+                <div class="about-card">
+                    <h4>Company Overview</h4>
+                    <p>
+                        GreenScape Consultancy specializes in sustainable architecture,
+                        energy-efficient design, and eco-friendly infrastructure planning.
+                    </p>
+                </div>
             </div>
+
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="about-card">
+                    <h4>Mission</h4>
+                    <p>
+                        Our mission is to transform urban development through innovative,
+                        sustainable, and environmentally responsible building practices.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="about-card">
+                    <h4>Why Choose Us</h4>
+                    <p>
+                        Certified experts, modern technologies, green innovation,
+                        and proven experience in sustainable construction projects.
+                    </p>
+                </div>
+            </div>
+
         </div>
-    </section>
 
-    <!-- ======================================
-         ABOUT SECTION
-    ====================================== -->
+    </div>
+</section>
 
-    <section id="about">
-        <div class="container">
-            <div class="text-center">
-                <h2 class="section-title">About Us</h2>
-                <p class="section-subtitle">
-                    We create sustainable spaces that blend innovation, nature,
-                    and modern architecture.
-                </p>
+<!-- =========================================
+     SERVICES SECTION
+========================================== -->
+
+<section id="services" class="bg-light">
+    <div class="container">
+
+        <div class="text-center mb-5">
+            <h2 class="section-title">Our Services</h2>
+            <p class="section-subtitle">
+                Comprehensive green consultancy services tailored for modern sustainable developments.
+            </p>
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-lg-4 col-md-6" data-aos="zoom-in">
+                <div class="service-card">
+                    <i class="bi bi-building"></i>
+                    <h4>Green Building Design</h4>
+                    <p>Eco-conscious building design with sustainable materials and energy optimization.</p>
+                </div>
             </div>
 
-            <div class="row g-4">
-                <div class="col-lg-4" data-aos="fade-right">
-                    <div class="glass-card">
-                        <h4>Our Mission</h4>
+            <div class="col-lg-4 col-md-6" data-aos="zoom-in">
+                <div class="service-card">
+                    <i class="bi bi-lightning-charge"></i>
+                    <h4>Energy Efficiency</h4>
+                    <p>Reduce operational costs using intelligent energy-saving systems.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6" data-aos="zoom-in">
+                <div class="service-card">
+                    <i class="bi bi-house-heart"></i>
+                    <h4>Sustainable Architecture</h4>
+                    <p>Smart architecture solutions combining beauty, function, and sustainability.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6" data-aos="zoom-in">
+                <div class="service-card">
+                    <i class="bi bi-patch-check"></i>
+                    <h4>LEED Support</h4>
+                    <p>Complete assistance for LEED certification and green compliance.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6" data-aos="zoom-in">
+                <div class="service-card">
+                    <i class="bi bi-flower1"></i>
+                    <h4>Eco Interiors</h4>
+                    <p>Healthy and environmentally friendly interior solutions for modern spaces.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6" data-aos="zoom-in">
+                <div class="service-card">
+                    <i class="bi bi-droplet-half"></i>
+                    <h4>Rainwater Harvesting</h4>
+                    <p>Efficient water conservation systems for sustainable living.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- =========================================
+     COUNTER SECTION
+========================================== -->
+
+<section class="counter-section text-center">
+    <div class="container">
+        <div class="row g-4">
+
+            <div class="col-md-3">
+                <div class="counter-box">
+                    <h2 class="counter" data-target="250">0</h2>
+                    <p>Projects Completed</p>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="counter-box">
+                    <h2 class="counter" data-target="120">0</h2>
+                    <p>Happy Clients</p>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="counter-box">
+                    <h2 class="counter" data-target="15">0</h2>
+                    <p>Years Experience</p>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="counter-box">
+                    <h2 class="counter" data-target="98">0</h2>
+                    <p>Sustainability Score</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- =========================================
+     PROJECTS SECTION
+========================================== -->
+
+<section id="projects">
+    <div class="container">
+
+        <div class="text-center mb-5">
+            <h2 class="section-title">Our Projects</h2>
+            <p class="section-subtitle">
+                Explore our successful sustainable infrastructure and eco-building projects.
+            </p>
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-md-4" data-aos="fade-up">
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?q=80&w=1200&auto=format&fit=crop" alt="">
+                    <div class="project-overlay">
+                        Eco Corporate Tower
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4" data-aos="fade-up">
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1200&auto=format&fit=crop" alt="">
+                    <div class="project-overlay">
+                        Smart Green Villa
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4" data-aos="fade-up">
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1200&auto=format&fit=crop" alt="">
+                    <div class="project-overlay">
+                        Sustainable Office Hub
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- =========================================
+     FEATURES SECTION
+========================================== -->
+
+<section id="features" class="bg-light">
+    <div class="container">
+
+        <div class="text-center mb-5">
+            <h2 class="section-title">Sustainability Features</h2>
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-md-3" data-aos="flip-left">
+                <div class="feature-box">
+                    <i class="bi bi-sun"></i>
+                    <h5>Solar Energy</h5>
+                    <p>Advanced renewable solar power systems.</p>
+                </div>
+            </div>
+
+            <div class="col-md-3" data-aos="flip-left">
+                <div class="feature-box">
+                    <i class="bi bi-droplet"></i>
+                    <h5>Water Conservation</h5>
+                    <p>Efficient water management solutions.</p>
+                </div>
+            </div>
+
+            <div class="col-md-3" data-aos="flip-left">
+                <div class="feature-box">
+                    <i class="bi bi-recycle"></i>
+                    <h5>Waste Management</h5>
+                    <p>Modern recycling and waste reduction systems.</p>
+                </div>
+            </div>
+
+            <div class="col-md-3" data-aos="flip-left">
+                <div class="feature-box">
+                    <i class="bi bi-cpu"></i>
+                    <h5>Smart Energy</h5>
+                    <p>AI-powered intelligent energy optimization.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- =========================================
+     TESTIMONIALS
+========================================== -->
+
+<section id="testimonials">
+    <div class="container">
+
+        <div class="text-center mb-5">
+            <h2 class="section-title">Client Testimonials</h2>
+        </div>
+
+        <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+
+            <div class="carousel-inner">
+
+                <div class="carousel-item active">
+                    <div class="testimonial-card text-center">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="">
+                        <h5 class="mt-3">Sophia Carter</h5>
                         <p>
-                            To deliver sustainable construction and green design
-                            solutions that improve quality of life.
+                            “Professional team with exceptional sustainable design expertise.
+                            Our energy costs reduced significantly.”
                         </p>
                     </div>
                 </div>
 
-                <div class="col-lg-4" data-aos="fade-up">
-                    <div class="glass-card">
-                        <h4>Our Vision</h4>
+                <div class="carousel-item">
+                    <div class="testimonial-card text-center">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="">
+                        <h5 class="mt-3">Daniel James</h5>
                         <p>
-                            To become a global leader in eco-friendly and energy-efficient
-                            building consultancy.
+                            “Highly recommended consultancy for eco-friendly commercial projects.”
                         </p>
                     </div>
                 </div>
 
-                <div class="col-lg-4" data-aos="fade-left">
-                    <div class="glass-card">
-                        <h4>Why Choose Us</h4>
-                        <p>
-                            Expert architects, sustainable practices, innovative
-                            designs, and modern technology-driven solutions.
-                        </p>
-                    </div>
-                </div>
             </div>
+
         </div>
-    </section>
 
-    <!-- ======================================
-         SERVICES
-    ====================================== -->
+    </div>
+</section>
 
-    <section id="services" style="background:#eef5ee;">
-        <div class="container">
-            <div class="text-center">
-                <h2 class="section-title">Our Services</h2>
-                <p class="section-subtitle">
-                    Comprehensive green building and sustainability consultancy.
-                </p>
-            </div>
+<!-- =========================================
+     BLOG SECTION
+========================================== -->
 
-            <div class="row g-4">
+<section id="blog" class="bg-light">
+    <div class="container">
 
-                <div class="col-md-4" data-aos="zoom-in">
-                    <div class="service-card text-center">
-                        <i class="bi bi-buildings service-icon"></i>
-                        <h4>Green Building Design</h4>
-                        <p>Eco-conscious planning and sustainable building concepts.</p>
-                    </div>
-                </div>
-
-                <div class="col-md-4" data-aos="zoom-in">
-                    <div class="service-card text-center">
-                        <i class="bi bi-lightning-charge service-icon"></i>
-                        <h4>Energy Efficiency</h4>
-                        <p>Reduce energy consumption with smart optimization systems.</p>
-                    </div>
-                </div>
-
-                <div class="col-md-4" data-aos="zoom-in">
-                    <div class="service-card text-center">
-                        <i class="bi bi-tree service-icon"></i>
-                        <h4>Sustainable Architecture</h4>
-                        <p>Nature-inspired designs with long-term environmental benefits.</p>
-                    </div>
-                </div>
-
-                <div class="col-md-4" data-aos="zoom-in">
-                    <div class="service-card text-center">
-                        <i class="bi bi-award service-icon"></i>
-                        <h4>LEED Certification</h4>
-                        <p>Professional guidance for green certification processes.</p>
-                    </div>
-                </div>
-
-                <div class="col-md-4" data-aos="zoom-in">
-                    <div class="service-card text-center">
-                        <i class="bi bi-house-heart service-icon"></i>
-                        <h4>Eco Interiors</h4>
-                        <p>Healthy, stylish, and eco-friendly interior solutions.</p>
-                    </div>
-                </div>
-
-                <div class="col-md-4" data-aos="zoom-in">
-                    <div class="service-card text-center">
-                        <i class="bi bi-droplet-half service-icon"></i>
-                        <h4>Rainwater Harvesting</h4>
-                        <p>Smart water conservation and rainwater planning systems.</p>
-                    </div>
-                </div>
-
-            </div>
+        <div class="text-center mb-5">
+            <h2 class="section-title">Latest Insights</h2>
         </div>
-    </section>
 
-    <!-- ======================================
-         COUNTERS
-    ====================================== -->
+        <div class="row g-4">
 
-    <section>
-        <div class="container">
-            <div class="row g-4">
-
-                <div class="col-md-3">
-                    <div class="counter-box">
-                        <h2 class="counter" data-target="250">0</h2>
-                        <p>Projects Completed</p>
+            <div class="col-md-4">
+                <div class="blog-card">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200&auto=format&fit=crop" class="img-fluid">
+                    <div class="p-4">
+                        <h5>Future of Sustainable Architecture</h5>
+                        <p>Explore the next generation of eco-conscious urban development.</p>
                     </div>
                 </div>
-
-                <div class="col-md-3">
-                    <div class="counter-box">
-                        <h2 class="counter" data-target="120">0</h2>
-                        <p>Happy Clients</p>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="counter-box">
-                        <h2 class="counter" data-target="18">0</h2>
-                        <p>Years Experience</p>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="counter-box">
-                        <h2 class="counter" data-target="45">0</h2>
-                        <p>Awards Won</p>
-                    </div>
-                </div>
-
             </div>
+
+            <div class="col-md-4">
+                <div class="blog-card">
+                    <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1200&auto=format&fit=crop" class="img-fluid">
+                    <div class="p-4">
+                        <h5>Benefits of LEED Certification</h5>
+                        <p>Understand why green certification matters for businesses.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="blog-card">
+                    <img src="https://images.unsplash.com/photo-1460317442991-0ec209397118?q=80&w=1200&auto=format&fit=crop" class="img-fluid">
+                    <div class="p-4">
+                        <h5>Smart Green Energy Systems</h5>
+                        <p>How intelligent automation improves sustainability performance.</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
-    </section>
 
-    <!-- ======================================
-         PROJECTS
-    ====================================== -->
+    </div>
+</section>
 
-    <section id="projects" style="background:#eef5ee;">
-        <div class="container">
-            <div class="text-center">
-                <h2 class="section-title">Our Projects</h2>
-                <p class="section-subtitle">
-                    Innovative and sustainable projects delivered successfully.
-                </p>
-            </div>
+<!-- =========================================
+     CONTACT SECTION
+========================================== -->
 
-            <div class="row g-4">
+<section id="contact">
+    <div class="container">
 
-                <div class="col-md-4" data-aos="fade-up">
-                    <div class="project-card">
-                        <img src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?q=80&w=1200&auto=format&fit=crop"
-                            alt="Project">
-                        <div class="project-overlay">
-                            <h4>Eco Smart Villa</h4>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4" data-aos="fade-up">
-                    <div class="project-card">
-                        <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1200&auto=format&fit=crop"
-                            alt="Project">
-                        <div class="project-overlay">
-                            <h4>Green Office Complex</h4>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4" data-aos="fade-up">
-                    <div class="project-card">
-                        <img src="https://images.unsplash.com/photo-1460317442991-0ec209397118?q=80&w=1200&auto=format&fit=crop"
-                            alt="Project">
-                        <div class="project-overlay">
-                            <h4>Sustainable Residence</h4>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+        <div class="text-center mb-5">
+            <h2 class="section-title">Contact Us</h2>
         </div>
-    </section>
 
-    <!-- ======================================
-         SUSTAINABILITY
-    ====================================== -->
+        <div class="row g-5">
 
-    <section>
-        <div class="container">
-            <div class="text-center">
-                <h2 class="section-title">Sustainability Features</h2>
-            </div>
+            <div class="col-lg-6">
 
-            <div class="row g-4 text-center">
-
-                <div class="col-md-3">
-                    <div class="service-card">
-                        <i class="bi bi-sun service-icon"></i>
-                        <h5>Solar Energy</h5>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="service-card">
-                        <i class="bi bi-droplet service-icon"></i>
-                        <h5>Water Conservation</h5>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="service-card">
-                        <i class="bi bi-recycle service-icon"></i>
-                        <h5>Waste Management</h5>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="service-card">
-                        <i class="bi bi-cpu service-icon"></i>
-                        <h5>Smart Energy Systems</h5>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- ======================================
-         TESTIMONIALS
-    ====================================== -->
-
-    <section style="background:#eef5ee;">
-        <div class="container">
-            <div class="text-center">
-                <h2 class="section-title">Testimonials</h2>
-            </div>
-
-            <div class="row g-4">
-
-                <div class="col-md-4">
-                    <div class="testimonial-card">
-                        <p>
-                            “Excellent consultancy and innovative green solutions.
-                            Highly recommended!”
-                        </p>
-                        <h5>- Michael Johnson</h5>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="testimonial-card">
-                        <p>
-                            “Professional team with outstanding eco-friendly architecture
-                            expertise.”
-                        </p>
-                        <h5>- Sarah Williams</h5>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="testimonial-card">
-                        <p>
-                            “Our energy costs reduced drastically after implementing their
-                            solutions.”
-                        </p>
-                        <h5>- David Lee</h5>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- ======================================
-         BLOG
-    ====================================== -->
-
-    <section id="blog">
-        <div class="container">
-            <div class="text-center">
-                <h2 class="section-title">Latest Insights</h2>
-            </div>
-
-            <div class="row g-4">
-
-                <div class="col-md-4">
-                    <div class="blog-card">
-                        <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1200&auto=format&fit=crop"
-                            alt="Blog">
-                        <div class="blog-content">
-                            <h5>Future of Green Buildings</h5>
-                            <p>Explore upcoming innovations in sustainable architecture.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="blog-card">
-                        <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1200&auto=format&fit=crop"
-                            alt="Blog">
-                        <div class="blog-content">
-                            <h5>Smart Energy Systems</h5>
-                            <p>How AI and automation improve energy efficiency.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="blog-card">
-                        <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=1200&auto=format&fit=crop"
-                            alt="Blog">
-                        <div class="blog-content">
-                            <h5>Eco-Friendly Interiors</h5>
-                            <p>Top sustainable materials for modern interior design.</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- ======================================
-         CONTACT
-    ====================================== -->
-
-    <section id="contact" style="background:#eef5ee;">
-        <div class="container">
-
-            <div class="text-center">
-                <h2 class="section-title">Contact Us</h2>
-            </div>
-
-            <div class="row g-5">
-
-                <div class="col-lg-6">
+                <div class="contact-form">
 
                     <form id="contactForm">
 
                         <div class="mb-3">
-                            <input type="text" class="form-control" id="name"
-                                placeholder="Your Name" required>
+                            <input type="text" class="form-control" id="name" placeholder="Your Name" required>
                         </div>
 
                         <div class="mb-3">
-                            <input type="email" class="form-control" id="email"
-                                placeholder="Your Email" required>
+                            <input type="email" class="form-control" id="email" placeholder="Your Email" required>
                         </div>
 
                         <div class="mb-3">
-                            <textarea class="form-control" rows="5"
-                                placeholder="Your Message" required></textarea>
+                            <textarea rows="5" class="form-control" id="message" placeholder="Message" required></textarea>
                         </div>
 
-                        <button type="submit" class="btn btn-green">
+                        <button class="btn btn-green w-100">
                             Send Message
                         </button>
 
@@ -775,161 +986,274 @@
 
                 </div>
 
-                <div class="col-lg-6">
+            </div>
 
+            <div class="col-lg-6">
+
+                <div class="mb-4">
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3914.412040445172!2d76.267304!3d9.931233"
+                        src="https://maps.google.com/maps?q=New%20York&t=&z=13&ie=UTF8&iwloc=&output=embed"
                         width="100%"
                         height="350"
-                        style="border:0;"
+                        style="border:0; border-radius:20px;"
                         allowfullscreen=""
                         loading="lazy">
                     </iframe>
+                </div>
 
-                    <div class="mt-4">
-                        <p><i class="bi bi-geo-alt-fill"></i> Chennai, Tamil Nadu, India</p>
-                        <p><i class="bi bi-envelope-fill"></i> info@ecobuild.com</p>
-                        <p><i class="bi bi-telephone-fill"></i> +91 98765 43210</p>
-                    </div>
+                <div>
+                    <h5><i class="bi bi-geo-alt-fill text-success"></i> Address</h5>
+                    <p>123 Green Avenue, Eco City, NY 10001</p>
 
+                    <h5><i class="bi bi-envelope-fill text-success"></i> Email</h5>
+                    <p>info@greenscape.com</p>
+
+                    <h5><i class="bi bi-telephone-fill text-success"></i> Phone</h5>
+                    <p>+1 234 567 890</p>
                 </div>
 
             </div>
+
         </div>
-    </section>
 
-    <!-- ======================================
-         FOOTER
-    ====================================== -->
+    </div>
+</section>
 
-    <footer>
-        <div class="container">
-            <div class="row">
+<!-- =========================================
+     FOOTER
+========================================== -->
 
-                <div class="col-md-4">
-                    <h4>EcoBuild</h4>
-                    <p>
-                        Sustainable consultancy solutions for greener and smarter
-                        living.
-                    </p>
+<footer>
+
+    <div class="container">
+
+        <div class="row g-5">
+
+            <div class="col-lg-4">
+                <h5>GreenScape</h5>
+                <p>
+                    Premium sustainable consultancy delivering innovative eco-friendly
+                    infrastructure solutions worldwide.
+                </p>
+
+                <div class="social-icons">
+                    <a href="#"><i class="bi bi-facebook"></i></a>
+                    <a href="#"><i class="bi bi-instagram"></i></a>
+                    <a href="#"><i class="bi bi-linkedin"></i></a>
+                    <a href="#"><i class="bi bi-twitter-x"></i></a>
                 </div>
+            </div>
 
-                <div class="col-md-4">
-                    <h5>Quick Links</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
+            <div class="col-lg-4">
+                <h5>Quick Links</h5>
 
-                <div class="col-md-4">
-                    <h5>Newsletter</h5>
+                <p><a href="#home">Home</a></p>
+                <p><a href="#about">About</a></p>
+                <p><a href="#services">Services</a></p>
+                <p><a href="#projects">Projects</a></p>
 
-                    <div class="input-group mb-3">
-                        <input type="email" class="form-control"
-                            placeholder="Your Email">
+            </div>
+
+            <div class="col-lg-4">
+
+                <h5>Newsletter</h5>
+
+                <form>
+                    <div class="input-group">
+                        <input type="email" class="form-control" placeholder="Enter Email">
                         <button class="btn btn-success">Subscribe</button>
                     </div>
+                </form>
 
-                    <div class="social-icons mt-3">
-                        <a href="#"><i class="bi bi-facebook"></i></a>
-                        <a href="#"><i class="bi bi-instagram"></i></a>
-                        <a href="#"><i class="bi bi-linkedin"></i></a>
-                        <a href="#"><i class="bi bi-twitter-x"></i></a>
-                    </div>
-                </div>
-
-            </div>
-
-            <hr class="my-4">
-
-            <div class="text-center">
-                <p>
-                    © 2026 EcoBuild Consultancy. All Rights Reserved.
-                </p>
             </div>
 
         </div>
-    </footer>
 
-    <!-- ======================================
-         JAVASCRIPT
-    ====================================== -->
+        <hr class="my-4">
 
-    <!-- Bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <div class="text-center">
+            <p class="mb-0">
+                © 2026 GreenScape Consultancy. All Rights Reserved.
+            </p>
+        </div>
 
-    <!-- AOS -->
-    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    </div>
 
-    <script>
-        // ======================================
-        // PAGE LOADER
-        // ======================================
+</footer>
 
-        window.addEventListener("load", function () {
-            document.getElementById("loader").style.display = "none";
-        });
+<!-- =========================================
+     AI CHATBOX
+========================================== -->
 
-        // ======================================
-        // AOS ANIMATION
-        // ======================================
+<div class="chat-toggle" id="chatToggle">
+    <i class="bi bi-robot"></i>
+</div>
 
-        AOS.init({
-            duration: 1000,
-            once: true
-        });
+<div class="chatbox" id="chatbox">
 
-        // ======================================
-        // COUNTER ANIMATION
-        // ======================================
+    <div class="chat-header">
+        AI Sustainability Assistant
+    </div>
 
-        const counters = document.querySelectorAll('.counter');
+    <div class="chat-body" id="chatBody">
 
-        counters.forEach(counter => {
-            counter.innerText = '0';
+        <div class="message bot">
+            👋 Hello! How can I help you with sustainable building solutions today?
+        </div>
 
-            const updateCounter = () => {
-                const target = +counter.getAttribute('data-target');
-                const current = +counter.innerText;
+    </div>
 
-                const increment = target / 100;
+    <div class="chat-footer">
+        <input type="text" id="userInput" placeholder="Type a message...">
+        <button onclick="sendMessage()">
+            <i class="bi bi-send"></i>
+        </button>
+    </div>
 
-                if (current < target) {
-                    counter.innerText = `${Math.ceil(current + increment)}`;
-                    setTimeout(updateCounter, 20);
-                } else {
-                    counter.innerText = target;
-                }
-            };
+</div>
 
-            updateCounter();
-        });
+<!-- =========================================
+     SCRIPTS
+========================================== -->
 
-        // ======================================
-        // CONTACT FORM VALIDATION
-        // ======================================
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-        document.getElementById("contactForm")
-            .addEventListener("submit", function (e) {
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 
-                e.preventDefault();
+<script>
 
-                const name = document.getElementById("name").value;
-                const email = document.getElementById("email").value;
+    /* =========================================
+       AOS INIT
+    ========================================== */
 
-                if (name === "" || email === "") {
-                    alert("Please fill all fields");
-                } else {
-                    alert("Message sent successfully!");
-                    this.reset();
-                }
-            });
+    AOS.init({
+        duration:1000,
+        once:true
+    });
 
-    </script>
+    /* =========================================
+       LOADER
+    ========================================== */
+
+    window.addEventListener("load", function(){
+        document.getElementById("loader").style.display = "none";
+    });
+
+    /* =========================================
+       COUNTER ANIMATION
+    ========================================== */
+
+    const counters = document.querySelectorAll('.counter');
+
+    counters.forEach(counter => {
+
+        counter.innerText = '0';
+
+        const updateCounter = () => {
+
+            const target = +counter.getAttribute('data-target');
+            const c = +counter.innerText;
+
+            const increment = target / 100;
+
+            if(c < target){
+                counter.innerText = `${Math.ceil(c + increment)}`;
+                setTimeout(updateCounter, 30);
+            }else{
+                counter.innerText = target;
+            }
+        };
+
+        updateCounter();
+    });
+
+    /* =========================================
+       CONTACT FORM VALIDATION
+    ========================================== */
+
+    document.getElementById("contactForm").addEventListener("submit", function(e){
+
+        e.preventDefault();
+
+        let name = document.getElementById("name").value.trim();
+        let email = document.getElementById("email").value.trim();
+        let message = document.getElementById("message").value.trim();
+
+        if(name === "" || email === "" || message === ""){
+            alert("Please fill all fields.");
+            return;
+        }
+
+        alert("Message sent successfully!");
+
+        this.reset();
+    });
+
+    /* =========================================
+       AI CHATBOX TOGGLE
+    ========================================== */
+
+    const chatToggle = document.getElementById("chatToggle");
+    const chatbox = document.getElementById("chatbox");
+
+    chatToggle.addEventListener("click", () => {
+
+        if(chatbox.style.display === "block"){
+            chatbox.style.display = "none";
+        }else{
+            chatbox.style.display = "block";
+        }
+
+    });
+
+    /* =========================================
+       AI CHATBOT
+    ========================================== */
+
+    function sendMessage(){
+
+        const input = document.getElementById("userInput");
+        const chatBody = document.getElementById("chatBody");
+
+        let userText = input.value.trim();
+
+        if(userText === "") return;
+
+        // User Message
+        let userMsg = document.createElement("div");
+        userMsg.className = "message user";
+        userMsg.innerText = userText;
+        chatBody.appendChild(userMsg);
+
+        input.value = "";
+
+        // Bot Reply
+        let botMsg = document.createElement("div");
+        botMsg.className = "message bot";
+
+        let reply = "Thanks for your message! Our green building experts will guide you regarding sustainable architecture, solar systems, LEED certification, and eco-friendly solutions.";
+
+        if(userText.toLowerCase().includes("solar")){
+            reply = "Solar energy systems can significantly reduce electricity costs and carbon footprint.";
+        }
+
+        if(userText.toLowerCase().includes("leed")){
+            reply = "LEED certification improves sustainability standards and increases property value.";
+        }
+
+        if(userText.toLowerCase().includes("contact")){
+            reply = "You can contact us through the form in the contact section.";
+        }
+
+        setTimeout(() => {
+            botMsg.innerText = reply;
+            chatBody.appendChild(botMsg);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }, 500);
+
+    }
+
+</script>
 
 </body>
-
 </html>
